@@ -238,6 +238,30 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var dropdown = document.querySelector('.dropbtn');
+			var dropdownContent = document.querySelector('.dropdown-content');
+
+			// Toggle dropdown on click
+			dropdown.onclick = function (event) {
+				dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+				event.stopPropagation(); // Prevent this click from being captured by document
+			};
+
+			// Close dropdown if clicked outside
+			document.addEventListener('click', function (event) {
+				var isClickInsideDropdown = dropdown.contains(event.target) || dropdownContent.contains(event.target);
+
+				if (!isClickInsideDropdown) {
+					dropdownContent.style.display = 'none';
+				}
+			});
+		});
+	</script>
+
+
+
 </body>
 
 </html>
